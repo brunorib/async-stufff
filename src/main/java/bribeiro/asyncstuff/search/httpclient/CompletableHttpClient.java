@@ -1,13 +1,10 @@
 package bribeiro.asyncstuff.search.httpclient;
 
-import bribeiro.asyncstuff.search.async.AsyncSearchMemory;
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ForkJoinPool;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
