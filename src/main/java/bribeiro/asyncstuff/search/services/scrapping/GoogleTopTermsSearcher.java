@@ -1,6 +1,5 @@
-package bribeiro.asyncstuff.search;
+package bribeiro.asyncstuff.search.services.scrapping;
 
-import bribeiro.asyncstuff.search.async.AsyncSearchMemory;
 import bribeiro.asyncstuff.search.httpclient.CompletableHttpClient;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GoogleTopTermsSearcher implements TopTermsSearcher {
 
-  private final static Logger LOG = LoggerFactory.getLogger(AsyncSearchMemory.class);
+  private final static Logger LOG = LoggerFactory.getLogger(GoogleTopTermsSearcher.class);
 
   private static final String GOOGLE_SEARCH_URL = "https://www.google.com/search?q=";
 

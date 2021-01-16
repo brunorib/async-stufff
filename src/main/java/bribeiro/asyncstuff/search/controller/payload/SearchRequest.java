@@ -1,6 +1,6 @@
-package bribeiro.asyncstuff.search.payload;
+package bribeiro.asyncstuff.search.controller.payload;
 
-public class Search {
+public class SearchRequest {
 
   private String term;
 

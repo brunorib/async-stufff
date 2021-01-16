@@ -1,4 +1,4 @@
-package bribeiro.asyncstuff.search;
+package bribeiro.asyncstuff.search.services.scrapping;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

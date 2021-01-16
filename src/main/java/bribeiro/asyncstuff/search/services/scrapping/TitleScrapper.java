@@ -1,4 +1,4 @@
-package bribeiro.asyncstuff.search;
+package bribeiro.asyncstuff.search.services.scrapping;
 
 import bribeiro.asyncstuff.search.httpclient.CompletableHttpClient;
 import java.util.List;

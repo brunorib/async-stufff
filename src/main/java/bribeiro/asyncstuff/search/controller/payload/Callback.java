@@ -1,4 +1,4 @@
-package bribeiro.asyncstuff.search.payload;
+package bribeiro.asyncstuff.search.controller.payload;
 
 public class Callback {
 
