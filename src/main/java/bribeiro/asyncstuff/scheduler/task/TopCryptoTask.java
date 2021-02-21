@@ -17,12 +17,14 @@ public class TopCryptoTask {
         this.repository = repository;
     }
 
-    @Scheduled(fixedRate = 86400000)
     public void execute() {
-        searcher.getOrderedCrypto().thenAccept(ordered -> {
-            ordered.date = TimeUtils.getDateNormalFormat();
-            repository.save(ordered);
-        });
+        String id = TimeUtils.getDateNormalFormat();
+        if (!repository.existsById(id)) {
+            searcher.getOrderedCrypto().thenAccept(ordered -> {
+                ordered.date = id;
+                repository.save(ordered);
+            });
+        }
     }
 
 }

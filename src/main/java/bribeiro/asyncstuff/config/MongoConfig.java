@@ -12,20 +12,11 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 @Configuration
 public class MongoConfig {
 
-    private static final String LOCAL_URI = "mongodb://localhost:27017";
-
-    @Autowired
-    private Environment env;
+    private static final String URI = "mongodb+srv://admin:<password>@cluster0.yp8ye.mongodb.net/cryptodata?retryWrites=true&w=majority";
 
     @Bean
     public MongoClient mongoClient() {
-        String uri = env.getProperty("MONGO_URI");
-
-        if (uri == null) {
-            uri = LOCAL_URI;
-        }
-
-        return MongoClients.create(uri);
+        return MongoClients.create(URI);
     }
 
     public @Bean MongoTemplate mongoTemplate() {
