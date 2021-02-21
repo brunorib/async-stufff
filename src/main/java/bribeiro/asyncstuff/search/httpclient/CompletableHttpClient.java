@@ -5,8 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ForkJoinPool;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class CompletableHttpClient {
 
   private final ForkJoinPool taskPool = new ForkJoinPool();
 
-  public CompletableFuture<Document> get(final Request request) {
+  public CompletableFuture<Response> get(final Request request) {
     LOG.info("Doing http async request... {}", request.url());
     return CompletableFuture.supplyAsync(
         () -> {
@@ -31,16 +30,7 @@ public class CompletableHttpClient {
           }
         },
         taskPool
-    ).thenApply(response -> {
-      try {
-        LOG.info("Async request done for - {}", request.url());
-        Document parsed = Jsoup.parse(response.body().string());
-        LOG.info("Parsed - {}", request.url());
-        return parsed;
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
-    });
+    );
   }
 
 }
