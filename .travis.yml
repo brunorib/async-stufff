@@ -5,6 +5,16 @@ os: linux
 dist: trusty
 jdk: openjdk8
 
-script:
-  - ./gradlew build
-  - ./gradlew bootBuildImage --imageName=brusnosribca/cryptogather
+env:
+  global:
+    DOCKER_REPO=brunoribca/cryptoinsights
+
+jobs:
+  include:
+    - stage: build
+      script: ./gradlew build
+    - stage: docker build
+      script: ./gradlew bootBuildImage --imageName=$DOCKER_REPO
+    - stage: docker push
+      if: branch = master
+      script: ./docker_push.sh
