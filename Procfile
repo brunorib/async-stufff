@@ -1,1 +1,1 @@
-web: java -jar build/libs/async*.jar -Dserver.port=$PORT
+web: java -jar build/libs/async*.jar --server.port=$PORT
