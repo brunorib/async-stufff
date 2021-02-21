@@ -1,5 +1,4 @@
-language: java
-install: skip
+language: javas
 
 os: linux
 dist: trusty
