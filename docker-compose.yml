@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    container_name: cryptoinsights
+    image: brunoribca/cryptoinsights:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"

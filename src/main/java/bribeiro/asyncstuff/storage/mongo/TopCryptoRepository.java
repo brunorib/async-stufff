@@ -1,11 +1,11 @@
 package bribeiro.asyncstuff.storage.mongo;
 
-import bribeiro.asyncstuff.cryptomodel.CryptoData;
+import bribeiro.asyncstuff.cryptomodel.CryptoList;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 
-public interface TopCryptoRepository extends MongoRepository<CryptoData, String> {
+public interface TopCryptoRepository extends MongoRepository<CryptoList, String> {
 
-    CryptoData findByDate(String date);
+    CryptoList findByDate(String date);
 
 }

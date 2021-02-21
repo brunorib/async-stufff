@@ -2,3 +2,4 @@ gradlew.bat
 .gradle/
 .idea/
 build/
+data/

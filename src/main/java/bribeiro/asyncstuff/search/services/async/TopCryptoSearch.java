@@ -1,6 +1,6 @@
 package bribeiro.asyncstuff.search.services.async;
 
-import bribeiro.asyncstuff.cryptomodel.CryptoData;
+import bribeiro.asyncstuff.cryptomodel.CryptoList;
 import bribeiro.asyncstuff.search.httpclient.CompletableHttpClient;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,14 +29,14 @@ public class TopCryptoSearch {
     }
 
 
-    public CompletableFuture<CryptoData> getOrderedCrypto() {
+    public CompletableFuture<CryptoList> getOrderedCrypto() {
         HashMap<String, String> params = new HashMap<>();
         params.put("limit", "5000");
 
         return makeAPICall(URI, params);
     }
 
-    private CompletableFuture<CryptoData> makeAPICall(String uri, Map<String, String> params) {
+    private CompletableFuture<CryptoList> makeAPICall(String uri, Map<String, String> params) {
 
         HttpUrl.Builder httpBuilder = HttpUrl.parse(uri).newBuilder();
         if (params != null) {
@@ -55,7 +55,7 @@ public class TopCryptoSearch {
                 objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                 assert response.body() != null;
                 String body = response.body().string();
-                return objectMapper.readValue(body, CryptoData.class);
+                return objectMapper.readValue(body, CryptoList.class);
             } catch (IOException e) {
                 throw new RuntimeException("FALLO");
             }
