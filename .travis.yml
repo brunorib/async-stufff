@@ -13,6 +13,9 @@ jobs:
   include:
     - stage: build
       script: ./build.sh
-    - stage: docker push
-      if: branch = main
-      script: ./docker_push.sh
+
+deploy:
+  provider: script
+  script: bash docker_push.sh
+  on:
+    branch: main
