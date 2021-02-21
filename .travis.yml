@@ -12,9 +12,7 @@ env:
 jobs:
   include:
     - stage: build
-      script: ./gradlew build
-    - stage: docker build
-      script: ./gradlew bootBuildImage --imageName=$DOCKER_REPO
+      script: ./gradlew build && ./gradlew bootBuildImage --imageName=$DOCKER_REPO
     - stage: docker push
-      if: branch = master
+      if: branch = main
       script: ./docker_push.sh
