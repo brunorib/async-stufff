@@ -4,6 +4,7 @@ import bribeiro.asyncstuff.cryptomoves.result.CryptoMoves;
 import bribeiro.asyncstuff.cryptomoves.service.CryptoMovesService;
 import bribeiro.asyncstuff.scheduler.task.TopCryptoTask;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,7 @@ public class CryptoMovesController {
         this.service = service;
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/cryptomoves")
     public List<CryptoMoves> getSearchTerms(@RequestParam("from") String fromDate,
                                             @RequestParam("to") String toDate) {
@@ -35,12 +37,14 @@ public class CryptoMovesController {
         }
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/cryptomoves/getdaily")
     public String getDaily() {
         task.execute();
         return "OK";
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/cryptomoves/earliest")
     public Earliest earliest() {
         return new Earliest(service.getEarliestDate());
