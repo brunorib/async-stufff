@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 public class CryptoList {
 
     @JsonProperty("data")
-    List<CryptoData> data;
+    public List<CryptoData> data;
 
     @JsonIgnore
     @MongoId

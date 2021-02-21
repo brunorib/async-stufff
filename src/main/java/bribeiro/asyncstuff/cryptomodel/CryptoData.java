@@ -8,6 +8,12 @@ public class CryptoData {
     @JsonProperty("symbol")
     public String symbol;
 
+    @JsonProperty("name")
+    public String name;
+
+    @JsonProperty("id")
+    public int id;
+
     @JsonProperty("cmc_rank")
     public int rank;
 
